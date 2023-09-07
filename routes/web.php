@@ -17,4 +17,5 @@ Route::get('/', function () {
     return "sjuk";
 });
 
-Route::get('/my_page', [\App\Http\Controllers\MyPlaceController::class, 'index']);
+Route::get('/posts', [\App\Http\Controllers\PostController::class, 'index']);
+Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'create']);
