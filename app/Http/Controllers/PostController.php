@@ -40,5 +40,19 @@ class PostController extends Controller
         dd('crete');
 
     }
+
+    public function update(){
+        $post = Post::find(5);
+
+
+        $post -> update([
+            'title'=> 'update title 2 of post from phpstorm',
+            'content'=> 'update content 2 of post from phpstorm',
+            'image'=> 'update image 2 of post from phpstorm',
+            'likes'=> 33,
+            'is_published'=> 1
+        ]);
+        dd('update');
+    }
 }
 
