@@ -10,7 +10,7 @@ class PostController extends Controller
     public function index(){
         $posts = Post::all();
         foreach ($posts as $i){
-            dump($i->title);
+            dump($i->content);
         }
         dd('end');
     }
@@ -56,7 +56,7 @@ class PostController extends Controller
     }
 
     public function delete(){
-        $post = Post::find(2);
+        $post = Post::find(6);
         $post->delete();
         dd('delete');
     }
@@ -65,6 +65,55 @@ class PostController extends Controller
         $post = Post::withTrashed()->find(2);
         $post->restore();
         dd('$post wiht restore');
+
+    }
+
+    public function firstOrCreate(){
+
+        $anotherPost = [
+            'title'=> 'some post',
+            'content'=> 'some content',
+            'image'=> 'some image',
+            'likes'=> 32,
+            'is_published'=> 1
+        ];
+
+
+        $post = Post::firstOrCreate([
+            'title'=> 'title from phpstorm',
+        ],
+            [
+            'title'=> 'some post',
+            'content'=> 'some content',
+            'image'=> 'some image',
+            'likes'=> 32,
+            'is_published'=> 1
+        ]);
+        dd($post->content);
+
+    }
+
+    public function updateOrCreate(){
+
+        $anotherPost = [
+            'title'=> 'update some post',
+            'content'=> 'update some content',
+            'image'=> 'update some image',
+            'likes'=> 332,
+            'is_published'=> 1
+        ];
+
+        $post = Post::updateOrCreate([
+            'title'=> 'update some post',
+        ],['title'=> 'update 1 some post',
+            'content'=> 'update some content',
+            'image'=> 'update some image',
+            'likes'=> 332,
+            'is_published'=> 1
+
+        ]);
+        dd($post->title);
+
 
     }
 }

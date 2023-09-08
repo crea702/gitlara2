@@ -22,3 +22,5 @@ Route::get('/posts/create', [\App\Http\Controllers\PostController::class, 'creat
 Route::get('/posts/update', [\App\Http\Controllers\PostController::class, 'update']);
 Route::get('/posts/delete', [\App\Http\Controllers\PostController::class, 'delete']);
 Route::get('/posts/restore', [\App\Http\Controllers\PostController::class, 'restore']);
+Route::get('/posts/first_or_create', [\App\Http\Controllers\PostController::class, 'firstOrCreate']);
+Route::get('/posts/update_or_create', [\App\Http\Controllers\PostController::class, 'updateOrCreate']);
