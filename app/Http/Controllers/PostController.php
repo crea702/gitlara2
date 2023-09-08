@@ -9,10 +9,8 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::all();
-        foreach ($posts as $i){
-            dump($i->content);
-        }
-        dd('end');
+        return view('posts', compact('posts'));
+
     }
 
     public function create(){
