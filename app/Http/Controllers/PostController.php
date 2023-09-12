@@ -9,33 +9,12 @@ class PostController extends Controller
 {
     public function index(){
         $posts = Post::all();
-        return view('posts', compact('posts'));
+        return view('post.index', compact('posts'));
 
     }
 
     public function create(){
-        $postsArr = [
-            [
-                'title'=> 'title from phpstorm',
-                'content'=> 'content from phpstorm',
-                'image'=> 'image from phpstorm',
-                'likes'=> 20,
-                'is_published'=> 1
-            ],
-            [
-                'title'=> 'title 2 of post from phpstorm',
-                'content'=> 'content 2 of post from phpstorm',
-                'image'=> 'image 2 of post from phpstorm',
-                'likes'=> 22,
-                'is_published'=> 1
-            ]
-        ];
-        foreach ($postsArr as $item){
-
-            Post::create($item);
-        }
-
-        dd('crete');
+        return view('post.create');
 
     }
 
