@@ -18,18 +18,33 @@ class PostController extends Controller
 
     }
 
-    public function update(){
-        $post = Post::find(5);
-
-
-        $post -> update([
-            'title'=> 'update title 2 of post from phpstorm',
-            'content'=> 'update content 2 of post from phpstorm',
-            'image'=> 'update image 2 of post from phpstorm',
-            'likes'=> 33,
-            'is_published'=> 1
+    public function store(){
+        $data = \request()->validate([
+           'title' => 'string',
+           'content' => 'string',
+           'image' => 'string',
         ]);
-        dd('update');
+        Post::create($data);
+        return redirect()->route('posts.index');
+    }
+    public function show(Post $post){
+        return view('post.show', compact('post'));
+    }
+
+    public function edit(Post $post){
+        return view('post.edit', compact('post'));
+    }
+
+
+    public function update(Post $post){
+
+        $data = \request()->validate([
+            'title' => 'string',
+            'content' => 'string',
+            'image' => 'string',
+        ]);
+        $post->update($data);
+        return redirect()->route('posts.show', $post->id);
     }
 
     public function delete(){

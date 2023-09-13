@@ -1,24 +1,23 @@
 @extends('layouts.main')
 @section('content')
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
+    <div>
+        <form action="{{route('posts.store')}}" method="post">
+            @csrf
+            <div class="mb-3">
+                <label for="Title" class="form-label">Title</label>
+                <input type="text" name="title" class="form-control" id="title" placeholder="Title">
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea name="content" class="form-control" id="content" placeholder="Content"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="text" name="image" class="form-control" id="image" placeholder="Image">
+            </div>
+            <button type="submit" class="btn-group-sm">Create</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="content" class="form-label">Content</label>
-        <input type="text" class="form-control" id="title" placeholder="Content">
-    </div>
-    <div class="mb-3">
-        <label for="Content" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
-    </div>
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
-    </div>
-    <div class="mb-3">
-        <label for="Title" class="form-label">Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Title">
-    </div>
+
 
 @endsection
