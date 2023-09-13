@@ -53,6 +53,11 @@ class PostController extends Controller
         dd('delete');
     }
 
+    public function destroy(Post $post){
+        $post->delete();
+        return redirect()->route('posts.index');
+    }
+
     public function restore(){
         $post = Post::withTrashed()->find(2);
         $post->restore();
