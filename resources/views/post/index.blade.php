@@ -6,7 +6,7 @@
         </div>
         @foreach($posts as $post)
             <div>
-                <a href="{{route('posts.show',$post->id)}}">{{$post->id}}.{{$post->title}}</a>
+                <a href="{{route('posts.show',$post->id)}}">{{$post->id}}.{{$post->title}} - {{$post->category_id}} категория</a>
             </div>
         @endforeach
 

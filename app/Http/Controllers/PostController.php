@@ -2,14 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
     public function index(){
-        $posts = Post::all();
-        return view('post.index', compact('posts'));
+
+        $category = Category::find(1);
+        $post = Post::find(1);
+        dd($post->category);
+
+
+        // return view('post.index', compact('posts'));
 
     }
 
@@ -23,6 +29,7 @@ class PostController extends Controller
            'title' => 'string',
            'content' => 'string',
            'image' => 'string',
+
         ]);
         Post::create($data);
         return redirect()->route('posts.index');
@@ -42,6 +49,7 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'image' => 'string',
+
         ]);
         $post->update($data);
         return redirect()->route('posts.show', $post->id);
