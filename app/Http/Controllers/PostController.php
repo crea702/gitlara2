@@ -13,13 +13,16 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
+
         return view('post.index', compact('posts'));
 
     }
 
     public function create()
     {
-        return view('post.create');
+        $categories = Category::all();
+        $tegs = Teg::all();
+        return view('post.create', compact('categories', 'tegs'));
 
     }
 
@@ -29,9 +32,16 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'image' => 'string',
-
+            'category_id' => 'string',
+            'teg' =>'array',
         ]);
-        Post::create($data);
+        $tegs = $data['teg'];
+        unset($data['teg']);
+
+
+        $post = Post::firstOrCreate($data);
+        $post->tegs()->attach($tegs);
+
         return redirect()->route('posts.index');
     }
 
@@ -42,7 +52,9 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        return view('post.edit', compact('post'));
+        $categories = Category::all();
+        $tegs = Teg::all();
+        return view('post.edit', compact('post','categories', 'tegs'));
     }
 
 
@@ -53,9 +65,17 @@ class PostController extends Controller
             'title' => 'string',
             'content' => 'string',
             'image' => 'string',
+            'category_id' => 'string',
+            'teg' =>'array',
+
 
         ]);
+        $tegs = $data['teg'];
+        unset($data['teg']);
+
+
         $post->update($data);
+        $post ->tegs()->sync($tegs);
         return redirect()->route('posts.show', $post->id);
     }
 

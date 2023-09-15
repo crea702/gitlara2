@@ -2,11 +2,11 @@
 @section('content')
     <div>
         <div>
-            <a href="{{route('posts.create')}}" class="btn-group-sm mb-3">Add one</a>
+            <a href="{{route('posts.create')}}" class="btn btn-primary">Add one</a>
         </div>
         @foreach($posts as $post)
             <div>
-                <a href="{{route('posts.show',$post->id)}}">{{$post->id}}.{{$post->title}} - {{$post->category_id}} категория</a>
+                <a href="{{route('posts.show',$post->id)}}">{{$post->id}}.{{$post->title}} - {{$post->category_id}}</a>
             </div>
         @endforeach
 
