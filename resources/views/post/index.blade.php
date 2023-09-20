@@ -9,6 +9,9 @@
                 <a href="{{route('posts.show',$post->id)}}">{{$post->id}}.{{$post->title}} - {{$post->category_id}}</a>
             </div>
         @endforeach
+        <div>
+            {{$posts->withQueryString()->links()}}
+        </div>
 
     </div>
 @endsection

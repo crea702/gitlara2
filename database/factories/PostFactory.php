@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PostFactory extends Factory
 {
     protected $model = Post::class;
+
     /**
      * Define the model's default state.
      *
@@ -20,7 +21,7 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->sentence(3),
             'content' => $this->faker->text,
             'image' => $this->faker->imageUrl(),
             'likes' => random_int(1, 200),
